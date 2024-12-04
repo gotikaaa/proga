@@ -1,0 +1,46 @@
+public class Main {
+    public static void main(String[] args) {
+        long[] z = new long[16];
+        for (int i = 0; i < z.length; i++) {
+            z[i] = i + 3;
+        }
+        double[] x = new double[17];
+        for (int j = 0; j < x.length; j++) {
+            x[j] = -5.0 + (Math.random() * (9.0 - (-5.0)));
+        }
+        array(x, z);
+    }
+    public static void array(double[] x, long[] z) {
+        double[][] z1 = new double[16][17];
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 17; j++) {
+                switch ((int) z[i]) {
+                    case 4:
+                        z1[i][j] = Math.sin(Math.cos(Math.pow(x[j] / 2, 3)));
+                        break;
+                    case 3:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 13:
+                    case 15:
+                    case 16:
+                    case 18:
+                        z1[i][j] = Math.cbrt(Math.tan(Math.pow(x[j], x[j] / 1 / 2)));
+                        break;
+                    default:
+                        z1[i][j] = Math.tan(Math.pow(Math.asin((x[j] - 0.5) / 9), Math.pow((1.0 / 3.0) * Math.cbrt(3 * x[j] - 4), Math.atan((x[j] - 0.5) / 9))));
+                }
+            }
+        }
+        print(z1);
+    }
+    public static void print(double[][] z1) {
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 17; j++) {
+                System.out.printf("%9.5f ", z1[i][j]);
+            }
+            System.out.println();
+        }
+    }
+}
